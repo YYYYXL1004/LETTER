@@ -3,6 +3,7 @@ epoch_*_model.pth
 
 *.pth
 *.log
+*.npy
 LETTER-TIGER/wandb/
 LETTER-TIGER/ckpt
 
