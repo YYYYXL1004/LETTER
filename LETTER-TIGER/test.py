@@ -1,7 +1,7 @@
 import argparse
 import json
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "3,5"
 import sys
 from typing import List
 
@@ -155,7 +155,7 @@ def test(args):
     save_data["min_results"] = min_results
     save_data["max_results"] = max_results
     save_data["all_prompt_results"] = all_prompt_results
-
+    os.makedirs(os.path.dirname(args.results_file), exist_ok=True)
     with open(args.results_file, "w") as f:
         json.dump(save_data, f, indent=4)
 

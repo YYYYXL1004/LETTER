@@ -22,7 +22,7 @@ def parse_args():
     parser.add_argument('--num_workers', type=int, default=4, )
     parser.add_argument('--eval_step', type=int, default=2000, help='eval step')
     parser.add_argument('--learner', type=str, default="AdamW", help='optimizer')
-    parser.add_argument("--data_path", type=str, default="../data", help="Input data path.")
+    parser.add_argument("--data_path", type=str, default="../data/Instruments/Instruments.emb-longfrmer-base-4096-td.npy", help="Input data path.")
 
     parser.add_argument('--weight_decay', type=float, default=1e-4, help='l2 regularization weight')
     parser.add_argument("--dropout_prob", type=float, default=0.0, help="dropout ratio")
@@ -33,20 +33,20 @@ def parse_args():
     parser.add_argument('--sk_epsilons', type=float, nargs='+', default=[0.0, 0.0, 0.0, 0.003], help="sinkhorn epsilons")
     parser.add_argument("--sk_iters", type=int, default=50, help="max sinkhorn iters")
 
-    parser.add_argument("--device", type=str, default="cuda:4", help="gpu or cpu")
+    parser.add_argument("--device", type=str, default="cuda:5", help="gpu or cpu")
 
     parser.add_argument('--num_emb_list', type=int, nargs='+', default=[256,256,256,256], help='emb num of every vq')
     parser.add_argument('--e_dim', type=int, default=32, help='vq codebook embedding size')
     parser.add_argument('--quant_loss_weight', type=float, default=1.0, help='vq quantion loss weight')
-    parser.add_argument('--alpha', type=float, default=0.1, help='cf loss weight')
-    parser.add_argument('--beta', type=float, default=0.1, help='diversity loss weight')
+    parser.add_argument('--alpha', type=float, default=0.01, help='cf loss weight')
+    parser.add_argument('--beta', type=float, default=0.001, help='diversity loss weight')
     parser.add_argument('--n_clusters', type=int, default=10, help='n_clusters')
     parser.add_argument('--sample_strategy', type=str, default="all", help='sample_strategy')
-    parser.add_argument('--cf_emb', type=str, default="./RQ-VAE/ckpt/Instruments-32d-sasrec.pt", help='cf emb')
+    parser.add_argument('--cf_emb', type=str, default="./ckpt/Instruments-32d-sasrec.pt", help='cf emb')
    
     parser.add_argument('--layers', type=int, nargs='+', default=[2048,1024,512,256,128,64], help='hidden sizes of every layer')
 
-    parser.add_argument("--ckpt_dir", type=str, default="../checkpoint", help="output directory for model")
+    parser.add_argument("--ckpt_dir", type=str, default="../checkpoint/Instruments", help="output directory for model")
 
     return parser.parse_args()
 

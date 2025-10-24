@@ -1,7 +1,7 @@
 python ./RQ-VAE/main.py \
-  --device cuda:0 \
-  --data_path ../data/Instruments/Instruments.emb-llama-td.npy\
+  --device cuda:5 \
+  --data_path ../data/Instruments/Instruments.emb-longfrmer-base-4096-td.npy \
   --alpha 0.01 \
   --beta 0.0001 \
-  --cf_emb ./RQ-VAE/ckpt/Instruments-32d-sasrec.pt\
+  --cf_emb ./RQ-VAE/ckpt/Instruments-32d-sasrec.pt \
   --ckpt_dir ../checkpoint/

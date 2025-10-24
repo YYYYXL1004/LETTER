@@ -1,0 +1,11 @@
+epoch_*_model.pth
+*.pyc
+
+*.pth
+*.log
+LETTER-TIGER/wandb/
+LETTER-TIGER/ckpt
+
+LETTER-TIGER/results
+shakechen/Llama-2-7b-hf
+.lock/

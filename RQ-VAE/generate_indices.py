@@ -46,8 +46,8 @@ def parse_args():
     parser.add_argument("--dataset", type=str,default="Instruments", help='dataset')
     parser.add_argument("--root_path", type=str,default="../checkpoint/", help='root path')
     parser.add_argument('--alpha', type=str, default='1e-1', help='cf loss weight')
-    parser.add_argument('--epoch', type=int, default='10000', help='epoch')
-    parser.add_argument('--checkpoint', type=str, default='epoch_9999_collision_0.0012_model.pth', help='checkpoint name')
+    parser.add_argument('--epoch', type=int, default='15000', help='epoch')
+    parser.add_argument('--checkpoint', type=str, default='../checkpoint/Instruments/Oct-23-2025_23-09-45/best_collision_model.pth', help='checkpoint name')
     parser.add_argument('--beta', type=str, default='1e-4', help='div loss weight')
 
 
@@ -56,12 +56,13 @@ def parse_args():
 args_setting = parse_args()
 
 dataset = args_setting.dataset
-ckpt_path = args_setting.root_path + f'alpha{args_setting.alpha}-beta{args_setting.beta}/'+args_setting.checkpoint
-
+# ckpt_path = args_setting.root_path + f'alpha{args_setting.alpha}-beta{args_setting.beta}/'+args_setting.checkpoint
+ckpt_path = args_setting.checkpoint
 output_dir = f"./data/{dataset}/"
 output_file = f"{dataset}.index.epoch{args_setting.epoch}.alpha{args_setting.alpha}-beta{args_setting.beta}.json"
+os.makedirs(output_dir, exist_ok=True)
 output_file = os.path.join(output_dir,output_file)
-device = torch.device("cuda:0")
+device = torch.device("cuda:5")
 
 ckpt = torch.load(ckpt_path, map_location=torch.device('cpu'))
 args = ckpt["args"]

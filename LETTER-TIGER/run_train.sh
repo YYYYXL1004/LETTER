@@ -1,6 +1,9 @@
 # export WANDB_MODE=disabled
 export CUDA_LAUNCH_BLOCKING=1
-export CUDA_VISIBLE_DEVICES=0,1
+export CUDA_VISIBLE_DEVICES=3,5
+# 添加下面这两行来解决 RTX 40 系列 GPU 的兼容性问题
+export NCCL_P2P_DISABLE="1"
+export NCCL_IB_DISABLE="1"
 
 DATASET=Instruments
 OUTPUT_DIR=./ckpt/$DATASET/
